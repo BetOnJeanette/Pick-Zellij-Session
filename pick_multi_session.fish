@@ -3,7 +3,6 @@ function pick_multi_session
     set -l sessions (string sub -e -2 $sessions_with_br)
     set -l no_color (string replace -ra '\e\[[^m]*m' '' $sessions)
     set -l selected $(string join -- \n $no_color | fzf --separator=\n)
-    echo $selected
     if string length -q $selected
         zellij a "$selected"
     end
